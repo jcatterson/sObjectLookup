@@ -6,7 +6,7 @@ Dependencies: jQuery
 ![Alt text](/imageSample/sampleImage.jpg?raw=true "Screen Shot example")
 
 
-###Useage:
+###Usage:
 Create a new SObjectLookup( the_markup, string_column_array_to_query, the_sObject_table_you_want_to_query, the_field_to_filter_on );
 
 In my sample, I used jQueryUI.  You may choose to implement your own container for sObjectLookup.the_search_section
@@ -54,7 +54,7 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
  ```
  public class SendEmailWithSF_Attachments
  {
-     @RemoteAction
+    @RemoteAction
     public static List<sObject> query(List<String> fields, String tableName, Map<String, String> whereField)
     {
         String strFields = String.escapeSingleQuotes( String.join( fields, ',') );
