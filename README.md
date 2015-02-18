@@ -10,7 +10,7 @@ Create a new SObjectLookup( the_markup, string_column_array_to_query, the_sObjec
 define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on SObjectLookup.
 
 ###Functions for user to implement
- ShowLookup - is a notification that the magnifying glass has been clicked on.
+ showLookup - is a notification that the magnifying glass has been clicked on.
  
  
  itemSelected - after searching and selecting an item, this function is called; theSelectedItem->{"id":"The Id of the sObject clicked on", "clicked_on":"the actual column clicked on", "sobjectLookup": "the original SObjectLookup clicked on"}
