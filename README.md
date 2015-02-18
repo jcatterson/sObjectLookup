@@ -15,7 +15,7 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
  showLookup - is a notification that the magnifying glass has been clicked on.
  
  
- itemSelected - after searching and selecting an item, this function is called; theSelectedItem->{"id":"The Id of the sObject clicked on", "clicked_on":"the actual column clicked on", "sobjectLookup": "the original SObjectLookup clicked on"}
+ itemSelected - after searching and selecting an item, this function is called; theSelectedItem->{"id":"The Id of the sObject clicked on", "clicked_on":"the actual column clicked on" (In my screenshot, it would be the Name column), "sobjectLookup": "the original SObjectLookup clicked on"}
 
 
 ###Known Bugs:
