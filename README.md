@@ -3,6 +3,8 @@ This is a component to mimick Salesforce lookup logic.
 
 Dependencies: jQuery
 
+![Alt text](/imageSample/sampleImage.jpg?raw=true "Screen Shot example")
+
 
 ###Useage:
 Create a new SObjectLookup( the_markup, string_column_array_to_query, the_sObject_table_you_want_to_query, the_field_to_filter_on );
