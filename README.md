@@ -16,6 +16,20 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
  
  
  itemSelected - after searching and selecting an item, this function is called; theSelectedItem->{"id":"The Id of the sObject clicked on", "clicked_on":"the actual column clicked on" (In my screenshot, it would be the Name column), "sobjectLookup": "the original SObjectLookup clicked on"}
+ 
+ Lastly, implement the Apex remote action tied to the query that happens in sobject_lookup.js
+ ```
+     @RemoteAction
+    public static List<sObject> query(List<String> fields, String tableName, Map<String, String> whereField)
+    {
+        String strFields = String.escapeSingleQuotes( String.join( fields, ',') );
+        String whereClause = String.escapeSingleQuotes( whereField.get('whereColumn') );
+        String whereValue = String.escapeSingleQuotes( whereField.get('whereValue') );  
+        whereValue = whereValue.replaceAll( '[*]', '%' );
+        String query = 'Select ' + strFields + ' from ' + tableName + ' where ' + whereClause + ' like \'' + whereValue + '\'';
+        return Database.query( query );
+    }
+```
 
 
 ###Known Bugs:
