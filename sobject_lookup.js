@@ -1,3 +1,6 @@
+/* Dependent on JQuery
+*  Also requires a method in Salesforce called "SendEmailWithSF_Attachments.query" -> ( List<String> columnNames, String sobjectName, Map<String, String>{ "whereClause" : "fieldName", "whereValue" : "fieldValue" )
+*/
 function SObjectLookup( markup, headers, sobjectType, whereFilter ){
     this.headers = headers;
     this.sobjectType = sobjectType;
@@ -75,6 +78,11 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
     }
 
     this.fillResultsTable = function(res){
+        if( res.length == 0 ) {
+            this.clearSearch();
+            return;
+        }
+
         var header_html = this.fillHeaders(res);
         var all_rows = this.fillRows( res );
         all_rows = jQuery( all_rows );
@@ -92,7 +100,7 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
 
     this.fillHeaders = function( res ){
         var header_html = "<tr>";
-        var used_headers = []
+        var used_headers = [];
         for( var i = 0; i < this.headers.length; i++ ){
             var columnName = this.headers[i];
             if( res[0][columnName] && columnName){
