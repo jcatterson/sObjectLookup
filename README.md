@@ -9,6 +9,39 @@ Dependencies: jQuery
 ###Useage:
 Create a new SObjectLookup( the_markup, string_column_array_to_query, the_sObject_table_you_want_to_query, the_field_to_filter_on );
 
+In my sample, I used jQueryUI.  You may choose to implement your own container for sObjectLookup.the_search_section
+```
+   <apex:page controller="SendEmailWithSF_Attachments">
+         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+         <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"></link>
+         <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+         <script src="{!$Resource.sobject_lookup}"></script>
+         <script>
+            jQuery(function(){
+                var sObjectLookup = new SObjectLookup( jQuery('#custom_lookup'), ["Name", "Title", "Phone", "Email"], "Contact", "Name");
+                sObjectLookup.itemSelected = function( theSelectedItem ){
+                   var id = theSelectedItem["id"];
+                   var sobject = theSelectedItem["sobjectLookup"];
+                   sobject.the_search_section.dialog('close');
+                   var id = theSelectedItem["id"];
+                   jQuery("#the_input").val( theSelectedItem["clicked_on"] ).data('sf_id', id);
+                };
+                sobjectLookup.showLookup = function( the_lookup ){
+                    the_lookup.dialog('open');
+                };
+                sObjectLookup.the_search_section.dialog({
+                   autoOpen: false,
+                   width: 800,
+                   height: 500
+                });
+            });
+         </script>
+
+         <input type="text" id="the_input"></input>
+         <span id="custom_lookup"></span>
+   </apex:page>
+```
+
 define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on SObjectLookup.
 
 ###Functions for user to implement
@@ -19,6 +52,8 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
  
  Lastly, implement the Apex remote action tied to the query that happens in sobject_lookup.js
  ```
+ public class SendEmailWithSF_Attachments
+ {
      @RemoteAction
     public static List<sObject> query(List<String> fields, String tableName, Map<String, String> whereField)
     {
@@ -29,6 +64,7 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
         String query = 'Select ' + strFields + ' from ' + tableName + ' where ' + whereClause + ' like \'' + whereValue + '\'';
         return Database.query( query );
     }
+}
 ```
 
 
