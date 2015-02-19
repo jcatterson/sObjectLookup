@@ -52,8 +52,8 @@ define itemSelected( theSelectedItem ) and showLookup( the_lookup ) functions on
  
  Lastly, implement the Apex remote action tied to the query that happens in sobject_lookup.js
  ```
- public class SendEmailWithSF_Attachments
- {
+public class SendEmailWithSF_Attachments
+{
     @RemoteAction
     public static List<sObject> query(List<String> fields, String tableName, Map<String, String> whereField)
     {
