@@ -100,13 +100,9 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
 
     this.fillHeaders = function( res ){
         var header_html = "<tr>";
-        var used_headers = [];
         for( var i = 0; i < this.headers.length; i++ ){
             var columnName = this.headers[i];
-            if( res[0][columnName] && columnName){
-                header_html += '<th scope="col" class="zen-deemphasize">' + columnName + '</th>';
-                used_headers.push( columnName );
-            }
+            header_html += '<th scope="col" class="zen-deemphasize">' + columnName + '</th>';
         }
         header_html += '</tr>';
         return header_html;
@@ -119,19 +115,17 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
             var row = '<tr class="dataRow">'
             for( var j = 0; j < this.headers.length; j++ ){
                 var columnName = this.headers[j];
-                if( res[i][columnName] ){
-                    if( number_headers == 0 ){
-                        row += '<td>' +
-                               '    <div class="selectableRow" data-row-id="' + res[i]["Id"] + '">' +
-                               '        <a class="selectLink">' + res[i][columnName]  + '</a>' +
-                               '    </div>' +
-                               '</td>';
-                    }
-                    else{
-                        row += "<td>" + res[i][columnName]  + '</td>';
-                    }
-                    number_headers++;
+                if( number_headers == 0 ){ // The first column in each row shall be selectable
+                    row += '<td>' +
+                           '    <div class="selectableRow" data-row-id="' + res[i]["Id"] + '">' +
+                           '        <a class="selectLink">' + res[i][columnName]  + '</a>' +
+                           '    </div>' +
+                           '</td>';
                 }
+                else{
+                    row += "<td>" + res[i][columnName]  + '</td>';
+                }
+                number_headers++;
             }
             row += '</tr>';
             all_rows += row;
