@@ -33,10 +33,10 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
         '<div id="to_dialog">' + 
         '   <div>' + 
         '       <div id="title">' + 
-        '           <img class="giant_magnifying_glass"></img>' + 
-        '               <span id="lookup_title">' + 
-        '                   <h1>Lookup</h1>' + 
-        '               </span>' + 
+        '           <img src="/s.gif" class="giant_magnifying_glass"></img>' +
+        '           <span id="lookup_title">' + 
+        '               <h1>Lookup</h1>' + 
+        '           </span>' + 
         '       </div>' + 
         '       <div>' + 
         '           <input field="text" class="searchText"></input>' + 
@@ -52,17 +52,17 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
         '   </div>' + 
         '   <div id="searchResults">' + 
         '      <h2>Search Results</h2>' + 
-        '      <div id="searchResultList" class="listRelatedObject lookupBlock">' + 
-        '          <div class="bPageBlock brandSecondaryBrd secondaryPalette">' + 
-        '              <div class="pbHeader"></div>' + 
-        '              <div class="pbBody">' + 
-        '                  <table class="list" border="0" cellspacing="0" cellpadding="0">' + 
-        '                      <tbody id="theBody"></tbody>' + 
-        '                  </table>' + 
-        '              </div>' + 
-        '          </div>' + 
-        '      </div>' + 
-        '   </div>' + 
+        '      <div id="searchResultList" class="listRelatedObject lookupBlock">' +
+        '          <div class="bPageBlock brandSecondaryBrd secondaryPalette">' +
+        '              <div class="pbHeader"></div>' +
+        '              <div class="pbBody">' +
+        '                  <table class="list" border="0" cellspacing="0" cellpadding="0">' +
+        '                      <tbody id="theBody"></tbody>' +
+        '                  </table>' +
+        '              </div>' +
+        '          </div>' +
+        '      </div>' +
+        '   </div>' +
         '</div>';
         searchPanel = jQuery( searchPanel );
         searchPanel.find('#searchSobjectsBtn').click( this, function(evt){
