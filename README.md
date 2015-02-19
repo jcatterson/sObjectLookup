@@ -3,7 +3,7 @@ This is a component to mimick Salesforce lookup logic.
 
 Dependencies: jQuery
 
-![Alt text](/imageSample/sampleImage.jpg?raw=true "Screen Shot example")
+![Alt text](/sampleImage/sampleImage.jpg?raw=true "Screen Shot example")
 
 
 ###Usage:
@@ -15,7 +15,7 @@ In my sample, I used jQueryUI.  You may choose to implement your own container f
          <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
          <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css"></link>
          <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-         <link rel="stylesheet" href="{!$Resource.emailWithSF_css}"></link>
+         <link rel="stylesheet" href="{!$Resource.sobject_lookup_css}"></link>
          <script src="{!$Resource.sobject_lookup}"></script>
          <script>
             jQuery(function(){
