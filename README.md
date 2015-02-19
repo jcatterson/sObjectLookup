@@ -26,7 +26,7 @@ In my sample, I used jQueryUI.  You may choose to implement your own container f
                    var id = theSelectedItem["id"];
                    jQuery("#the_input").val( theSelectedItem["clicked_on"] ).data('sf_id', id);
                 };
-                sobjectLookup.showLookup = function( the_lookup ){
+                sObjectLookup.showLookup = function( the_lookup ){
                     the_lookup.dialog('open');
                 };
                 sObjectLookup.the_search_section.dialog({
