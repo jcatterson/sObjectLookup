@@ -71,8 +71,7 @@ public class SendEmailWithSF_Attachments
 
 ###Known Bugs:
 
-Columns headers for results table might not show if the first row from the result is empty.
-  See implementation of fillHeaders function.
+Columns headers that are not visible to the user will still show up, just as empty for each row.  If you would like to remove columns that are not queryable; I suggest before initializing the array for columns to query on SObjectLookup, get a list of fields that are queryable for the particular user.
 
 ###Unimplemented:
 
