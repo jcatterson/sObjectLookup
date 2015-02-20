@@ -108,6 +108,21 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
         return header_html;
     }
 
+    this.getColumnVal = function( columnName, sObject){
+        var cols = columnName.split('.');
+        var mapped = sObject;
+        for( var i = 0; i < cols.length; i++ ){
+            var field = cols[i];
+            if( typeof mapped !== "object" )
+                return '';
+            mapped = mapped[ field ];
+        }
+        if( !mapped ){
+            return '';
+        }
+        return mapped;
+    }
+
     this.fillRows = function(res){
         var all_rows = "";
         for( var i = 0; i < res.length; i++ ){
@@ -115,15 +130,16 @@ function SObjectLookup( markup, headers, sobjectType, whereFilter ){
             var row = '<tr class="dataRow">'
             for( var j = 0; j < this.headers.length; j++ ){
                 var columnName = this.headers[j];
-                if( number_headers == 0 ){ // The first column in each row shall be selectable
+                var columnValue = this.getColumnVal( columnName, res[i] );
+                if( number_headers == 0 ){
                     row += '<td>' +
                            '    <div class="selectableRow" data-row-id="' + res[i]["Id"] + '">' +
-                           '        <a class="selectLink">' + res[i][columnName]  + '</a>' +
+                           '        <a class="selectLink">' + columnValue  + '</a>' +
                            '    </div>' +
                            '</td>';
                 }
                 else{
-                    row += "<td>" + res[i][columnName]  + '</td>';
+                    row += "<td>" + columnValue  + '</td>';
                 }
                 number_headers++;
             }
