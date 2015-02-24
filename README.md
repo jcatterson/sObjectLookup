@@ -1,7 +1,7 @@
 # sObjectLookup
-This is a component to mimick Salesforce lookup logic.
+This is a component to mimick Salesforce lookup logic.  With very minimal dependencies.
 
-Dependencies: jQuery
+Dependencies: jQuery (jquery-2.1.3.min.js)
 
 ![Alt text](/sampleImage/sampleImage.jpg?raw=true "Screen Shot example")
 
